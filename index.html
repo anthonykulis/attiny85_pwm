@@ -29,36 +29,70 @@
     <div class="container">
       <section id="main_content">
         <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<a id="what-it-is" class="anchor" href="#what-it-is" aria-hidden="true"><span class="octicon octicon-link"></span></a>What it is:</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>A lightweight PWM library port of Adafruit's Adafruit_SoftServo for AtTiny85 micro-controllers. </p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h3>
+<a id="what-differs-from-original" class="anchor" href="#what-differs-from-original" aria-hidden="true"><span class="octicon octicon-link"></span></a>What differs from original?</h3>
+
+<ol>
+<li>refresh encapsulation</li>
+</ol>
+
+<p>This library encapsulates the refresh cycle so you do not have to manually build the signal handler each time you use it. The downside to that, it uses slightly more memory than the original. The extra space consists of a globally scoped struct to hold the pin information and provide the refresh functionality. </p>
+
+<ol>
+<li>overloaded write()</li>
+</ol>
+
+<p>If you prefer to write in degrees (say using a servo), you can pass an <code>uint8_t</code> degree value to write. Or if you choose to work on duty cycles, you can pass a <code>float</code> duty cycle between 0 and 1. </p>
+
+<h3>
+<a id="who-can-use-it" class="anchor" href="#who-can-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Who can use it?</h3>
+
+<p>Works with servos, actuators, and really anything that needs a PWM signal. Duty cycle is built on 20 microsecond intervals. </p>
+
+<h3>
+<a id="how-to-download-from-github" class="anchor" href="#how-to-download-from-github" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to download from github:</h3>
+
+<pre><code>$ cd your_library_path
+$ git clone https://github.com/anthonykulis/attiny85_pwm.git &lt;optional-new-name&gt;
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use:</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ol>
+<li>Include header</li>
+</ol>
 
-<h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<pre><code>#include "attiny85_pwm.h"
+</code></pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ol>
+<li>Instantiate</li>
+</ol>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<pre><code>//assuming PIN_ONE defined...
+Attiny85_PWM myPwm(PIN_ONE);
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ol>
+<li>Write</li>
+</ol>
+
+<pre><code>// degrees?
+myPwm.write(42);
+
+// optionally, duty cycle
+myPwm.write(.42);
+</code></pre>
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Having trouble with the library? Feel free to submit a ticket. </p>
       </section>
     </div>
 
