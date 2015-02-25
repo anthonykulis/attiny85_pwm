@@ -35,15 +35,13 @@
 <h3>
 <a id="what-differs-from-original" class="anchor" href="#what-differs-from-original" aria-hidden="true"><span class="octicon octicon-link"></span></a>What differs from original?</h3>
 
-<ol>
-<li>refresh encapsulation</li>
-</ol>
+<h4>
+<a id="refresh-encapsulation" class="anchor" href="#refresh-encapsulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>refresh encapsulation</h4>
 
 <p>This library encapsulates the refresh cycle so you do not have to manually build the signal handler each time you use it. The downside to that, it uses slightly more memory than the original. The extra space consists of a globally scoped struct to hold the pin information and provide the refresh functionality. </p>
 
-<ol>
-<li>overloaded write()</li>
-</ol>
+<h4>
+<a id="overloaded-write" class="anchor" href="#overloaded-write" aria-hidden="true"><span class="octicon octicon-link"></span></a>overloaded write()</h4>
 
 <p>If you prefer to write in degrees (say using a servo), you can pass an <code>uint8_t</code> degree value to write. Or if you choose to work on duty cycles, you can pass a <code>float</code> duty cycle between 0 and 1. </p>
 
@@ -62,24 +60,18 @@ $ git clone https://github.com/anthonykulis/attiny85_pwm.git &lt;optional-new-na
 <h3>
 <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use:</h3>
 
-<ol>
-<li>Include header</li>
-</ol>
+<p>Include:</p>
 
 <pre><code>#include "attiny85_pwm.h"
 </code></pre>
 
-<ol>
-<li>Instantiate</li>
-</ol>
+<p>Instantiate:</p>
 
 <pre><code>//assuming PIN_ONE defined...
 Attiny85_PWM myPwm(PIN_ONE);
 </code></pre>
 
-<ol>
-<li>Write</li>
-</ol>
+<p>Write:</p>
 
 <pre><code>// degrees?
 myPwm.write(42);
