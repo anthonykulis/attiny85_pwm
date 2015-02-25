@@ -20,11 +20,11 @@ struct attached_t {
 };
 
 
-// Used when there will only be on PWM out
-// Allows you to use a simpler write
 Attiny85_PWM::Attiny85_PWM(int pin) {
   Attiny85Attached();
   Attiny85Attached.pin = pin;
+
+  // using adafruits defines here
   OCR0A = 0xAF;
   TIMSK |= _BV(OCIE0A);
 }
@@ -40,6 +40,7 @@ void Attiny85_PWM::write(float duty_cyle){
   Attiny85Attached.micros = map(degrees, 180, 1000, 2000);
 }
 
+// note, signal is every 2 microseconds
 SIGNAL(TIMER0_COMPA_vect) {
   if(++Attiny85Attached.counter >= 10){
     Attiny85Attached.counter = 0;
