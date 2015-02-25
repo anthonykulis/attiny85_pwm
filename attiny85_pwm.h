@@ -22,14 +22,15 @@
   #include "WProgram.h"
 #endif
 
+
 struct attached_t;
-attached_t Attiny85Attached;
+
 
 class Attiny85_PWM {
 
 public: 
-  Attiny85_PWM(uint8_t pin);
-  void write(uint8_t degrees);
+  Attiny85_PWM(int pin);
+  void write(int degrees);
   void write(float duty_cycle);
 };
 
