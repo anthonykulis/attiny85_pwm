@@ -30,10 +30,12 @@ Attiny85_PWM::Attiny85_PWM(int pin) {
 }
 
 void Attiny85_PWM::write(uint8_t degrees){
+  if(degrees < 0 || degrees > 180) return;
   Attiny85Attached.micros = map(degrees, 180, 1000, 2000);
 }
 
 void Attiny85_PWM::write(float duty_cyle){
+  if(duty_cyle < 0 || duty_cycle > 1) return;
   uint8_t degrees = duty_cyle/180;
   Attiny85Attached.micros = map(degrees, 180, 1000, 2000);
 }
